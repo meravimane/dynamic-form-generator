@@ -1,23 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css"; // Ensure Tailwind is imported
+import FromBuilder from "./components/FormBuilder";
+import FormPreview from "./components/FormPreview";
 
 function App() {
+  const [formConfig, setFormConfig] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App flex flex-col lg:flex-row p-8 gap-4">
+      <FromBuilder setFormConfig={setFormConfig} />
+      <FormPreview fields={formConfig} />
     </div>
   );
 }
